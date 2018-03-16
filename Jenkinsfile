@@ -1,18 +1,12 @@
-node ('docker') {
-  stage ('SCM Checkout') {
-    checkout scm
-  }
-  
-  stage ('Docker image build') {
-    sh 'docker build -t flaskapp .'
-  }
-  
-  stage ('Docker deploy') {
-    sh "docker run -d -p 7373:5000"
-  }
+pipeline {
+  agent none
 
-  stage ('Launch Info') {
-    echo "=================="
-    sh "docker ps -a"
+  stages {
+    stage ("Lint Code") {
+      agent { docker 'python:3' }
+      steps {
+        python --version
+      }
+    }
   }
 }
