@@ -3,9 +3,10 @@ pipeline {
 
   stages {
     stage ("Lint Code") {
-      agent { docker 'python:3' }
+      agent { docker 'pylint' }
       steps {
         sh 'python --version'
+        sh 'ls'
       }
     }
   }
