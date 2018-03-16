@@ -6,6 +6,7 @@ pipeline {
       agent { docker 'pylint' }
       steps {
         sh 'python --version'
+        sh 'pwd'
         sh 'ls'
       }
     }
