@@ -5,7 +5,7 @@ pipeline {
     stage ("Lint Code") {
       agent { docker 'python:3' }
       steps {
-        python --version
+        sh 'python --version'
       }
     }
   }
